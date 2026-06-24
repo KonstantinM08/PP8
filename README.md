@@ -134,7 +134,14 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How do you pass a file name to a program using the `-i` and `-o` options?**
-2. **What are typical use cases for parameters versus flags? How do the differ from one another?**
+   getopt(argc, argv, `"n:s:i:o:"` sring specifies the valid options. The colon `:` following       `i` and `o` characters tells `getopt` that these options require an argument.
+   After running compiled binary the filename is passed immediately following the flag,
+   seperated by a space. When getopt encounters `-i` it automatically assigns the next element
+   to the comand-line arguments "input.txt" to the external variable optarg. After that the
+   loop captures ghis with `infile = optarg`, making "input.txt" available to the program for
+   further operations.
+   
+3. **What are typical use cases for parameters versus flags? How do the differ from one another?**
 
 ---
 
