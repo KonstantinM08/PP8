@@ -134,15 +134,20 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How do you pass a file name to a program using the `-i` and `-o` options?**
-   getopt(argc, argv, `"n:s:i:o:"` sring specifies the valid options. The colon `:` following       `i` and `o` characters tells `getopt` that these options require an argument.
+   getopt(argc, argv, `"n:s:i:o:"` sring specifies the valid options. The colon `:` following       `i` and `o` characters tells
+   `getopt` that these options require an argument.
    After running compiled binary the filename is passed immediately following the flag,
    seperated by a space. When getopt encounters `-i` it automatically assigns the next element
    to the comand-line arguments "input.txt" to the external variable optarg. After that the
    loop captures ghis with `infile = optarg`, making "input.txt" available to the program for
    further operations.
    
-2. **What are typical use cases for parameters versus flags? How do the differ from one another?**
-
+3. **What are typical use cases for parameters versus flags? How do the differ from one another?**
+   Flags hold binary value, which makes them particularily interresting for switching between
+   different modes, or controlling ouptut details. It could also be to overrite saftety checks.
+   Parameters on the other hand provide core data a programm can work with. Therefore they can
+   be used to supplying a wide range of inputs, which could be used to provide a programm with a
+   file to read or a path to save results in. 
 ---
 
 ### Task 3: Interactive Input with `scanf` & `fscanf`
@@ -194,7 +199,11 @@ In this exercise you will:
 #### Reflection Question
 
 * **Why is a run-to-completion (batch) approach often preferable to interactive input?**
-
+  Compered to a computer human reaction, typing etc is increadibly slow. An interactive programm
+  often spends a large amount of time waiting for human input. Run-to-completion insures that
+  the CPU can run at 100% utalization. This way code could also be scheduled and run
+  unsupervised. Knowing the entire data a programm has to process also allows it to optimize
+  memory and storage. 
 ---
 
 ### Task 4: Input Redirection from STDIN
@@ -225,7 +234,10 @@ In this exercise you will:
 #### Reflection Question
 
 * **What is the difference between redirecting to stdin and explicitly opening a file with `fopen`?**
-
+stdin  redirects the opening of a file to the operating systems, wich hooks it to the standard
+input stream of the program before execution. The program reads from stdin like input from
+the terminal, allowing for a high flexibility of the same lines of code. When a program opens
+a file explicitly it makes a direct request at the operating systems API. 
 ---
 
 ### Task 5: Caesar Cipher & Prototype Asymmetric XOR Cipher
@@ -415,7 +427,10 @@ In this exercise you will:
 #### Reflection Question
 
 * **Explain in your own words what the encryption and decryption processes are doing in both ciphers.**
-
+`encrypt_char` checks if a character is a letter. If it is,
+it shifts that character forward in the alphabet by the number of positions by shift, the key for de- and encryption. The modulo operator `%26` handles "wrapping around" the alphabet. Any non-alphabetical character is ingored. `decrypt_char` is used to shift the characters backword by the same amount.
+`encrypt_xor` and `decrypt_xor` are applied to every single byte of data, not just alphabetical characters. It compares the bits of the character with the bits of the chosen single-byte `key`. Hence XOR is its own inverse, after having been applied once with a key, it can be
+reversed by being applied a second time with the same key. 
 ---
 
 **Remember:** Stop after **90 minutes** and record where you stopped.
