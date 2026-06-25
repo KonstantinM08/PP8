@@ -141,7 +141,7 @@ In this exercise you will:
    loop captures ghis with `infile = optarg`, making "input.txt" available to the program for
    further operations.
    
-3. **What are typical use cases for parameters versus flags? How do the differ from one another?**
+2. **What are typical use cases for parameters versus flags? How do the differ from one another?**
 
 ---
 
